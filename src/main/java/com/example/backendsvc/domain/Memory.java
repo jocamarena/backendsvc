@@ -3,7 +3,7 @@ package com.example.backendsvc.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 @Getter
 @Setter
@@ -16,8 +16,8 @@ public class Memory {
     @GeneratedValue(generator = "increment", strategy = GenerationType.AUTO)
     private String title;
     private String content;
-    private LocalDateTime createdDate;
-    private LocalDateTime modifiedDate;
-    @ManyToOne(fetch = FetchType.LAZY)
+    private Timestamp createdDate;
+    private Timestamp modifiedDate;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private User author;
 }
