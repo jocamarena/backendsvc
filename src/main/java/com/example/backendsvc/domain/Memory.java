@@ -14,10 +14,11 @@ import java.sql.Timestamp;
 public class Memory {
     @Id
     @GeneratedValue(generator = "increment", strategy = GenerationType.AUTO)
+    private Long id;
     private String title;
     private String content;
     private Timestamp createdDate;
     private Timestamp modifiedDate;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     private User author;
 }

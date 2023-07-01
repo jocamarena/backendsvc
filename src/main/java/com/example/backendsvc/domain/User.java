@@ -29,6 +29,6 @@ public class User {
     private boolean credentialsNonExpired;
     private boolean accountNonLocked;
     private Timestamp createdDate;
-    @OneToMany(mappedBy = "author")
+    @OneToMany(mappedBy = "author", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Memory> memories;
 }
