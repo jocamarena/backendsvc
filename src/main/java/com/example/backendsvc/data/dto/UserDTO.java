@@ -2,6 +2,8 @@ package com.example.backendsvc.data.dto;
 
 import lombok.*;
 
+import java.sql.Timestamp;
+
 @Builder
 @Setter
 @Getter
@@ -17,4 +19,5 @@ public class UserDTO {
     private boolean accountNonExpired;
     private boolean credentialsNonExpired;
     private boolean accountNonLocked;
+    private Timestamp createdDate;
 }

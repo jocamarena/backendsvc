@@ -23,4 +23,21 @@ public class UserService {
     public void deleteAll(){
         userRepository.deleteAll();
     }
+    public User findByUsername(String username){
+        return userRepository.findByUsername(username);
+    }
+    public User findById(long id){
+        return userRepository.findById(id);
+    }
+    public User findByEmail(String email){
+        return userRepository.findByEmail(email);
+    }
+    public Long save(User user){
+        User savedUser = userRepository.save(user);
+        if (savedUser.getId() > 1L) {
+            return savedUser.getId();
+        } else {
+            return 0L;
+        }
+    }
 }

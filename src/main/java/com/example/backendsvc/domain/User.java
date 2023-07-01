@@ -3,6 +3,8 @@ package com.example.backendsvc.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.sql.Timestamp;
+
 @Builder
 @Getter
 @Setter
@@ -12,7 +14,7 @@ import lombok.*;
 @Table(name = "USER")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USER_SEQ")
     private Long id;
     private String firstName;
     private String lastName;
@@ -25,4 +27,5 @@ public class User {
     private boolean accountNonExpired;
     private boolean credentialsNonExpired;
     private boolean accountNonLocked;
+    private Timestamp createdDate;
 }

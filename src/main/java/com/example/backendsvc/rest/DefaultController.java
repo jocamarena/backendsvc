@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 public class DefaultController {
     @GetMapping("/hello")
     public ResponseEntity<WelcomeDTO> hello() {
+
         return ResponseEntity.ok(WelcomeDTO.builder()
                 .message("Hello from Spring Boot")
                 .localDateTime(LocalDateTime.now().toString())
@@ -19,6 +20,13 @@ public class DefaultController {
     }
     @GetMapping("/hello/{name}")
     public ResponseEntity<WelcomeDTO> helloName(@PathVariable String name) {
+        return ResponseEntity.ok(WelcomeDTO.builder()
+                .message("Hello " + name + " from Spring Boot")
+                .localDateTime(LocalDateTime.now().toString())
+                .build());
+    }
+    @PostMapping
+    public ResponseEntity<WelcomeDTO> helloPost(@RequestBody String name) {
         return ResponseEntity.ok(WelcomeDTO.builder()
                 .message("Hello " + name + " from Spring Boot")
                 .localDateTime(LocalDateTime.now().toString())
