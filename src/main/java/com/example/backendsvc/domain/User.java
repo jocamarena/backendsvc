@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Builder
 @Getter
@@ -28,4 +29,6 @@ public class User {
     private boolean credentialsNonExpired;
     private boolean accountNonLocked;
     private Timestamp createdDate;
+    @OneToMany(mappedBy = "author")
+    private List<Memory> memories;
 }
