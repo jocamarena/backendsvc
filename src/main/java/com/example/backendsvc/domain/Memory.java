@@ -21,5 +21,6 @@ public class Memory {
     private Timestamp createdDate;
     private Timestamp modifiedDate;
     @ManyToOne
+    @JsonIgnoreProperties("memories")
     private User author;
 }
