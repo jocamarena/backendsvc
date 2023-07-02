@@ -17,5 +17,4 @@ public class MemoryDTO {
     private String content;
     private Timestamp createdDate;
     private Timestamp modifiedDate;
-    private Long authorId;
 }

@@ -25,6 +25,9 @@ public class MemoryService {
     public List<Memory> findAllMemories(){
         return memoryRepository.findAll();
     }
+    public List<Memory> findAllMemoriesByAuthorId(Long id){
+        return memoryRepository.findAllByAuthorId(id);
+    }
     public Optional<Memory> findMemoryById(Long id){
         return memoryRepository.findById(id);
     }

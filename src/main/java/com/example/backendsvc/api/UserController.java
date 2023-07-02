@@ -12,6 +12,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -28,9 +29,9 @@ public class UserController {
     }
     @GetMapping("/{id}")
     public ResponseEntity<UserDTO> getUserById(@PathVariable Long id){
-        User user = userService.findById(id);
-        if (user != null){
-            return ResponseEntity.ok(getUserDTO(user));
+        Optional<User> optionalUser = userService.findById(id);
+        if (optionalUser.isPresent()){
+            return ResponseEntity.ok(getUserDTO(optionalUser.get()));
         } else return ResponseEntity.notFound().build();
     }
     @GetMapping("/username/{username}")
@@ -55,8 +56,8 @@ public class UserController {
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteUserById(@PathVariable Long id){
-        User user = userService.findById(id);
-         if (user != null){
+        Optional<User> optionalUser = userService.findById(id);
+         if (optionalUser.isPresent()){
             userService.deleteById(id);
             return ResponseEntity.ok("User deleted successfully");
         } else return ResponseEntity.notFound().build();

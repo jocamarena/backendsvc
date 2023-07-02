@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -25,6 +26,9 @@ public class UserService {
     }
     public User findByUsername(String username){
         return userRepository.findByUsername(username);
+    }
+    public Optional<User> findById(Long id){
+        return userRepository.findById(id);
     }
     public User findById(long id){
         return userRepository.findById(id);
