@@ -18,6 +18,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/users/{id}/memories")
+@CrossOrigin(origins = "http://localhost:4200")
 public class MemoryController {
     private Logger logger = LoggerFactory.getLogger(MemoryController.class);
     private MemoryService memoryService;

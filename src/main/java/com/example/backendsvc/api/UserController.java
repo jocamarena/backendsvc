@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/users")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
     private Logger logger = LoggerFactory.getLogger(UserController.class);
     private UserService userService;
@@ -59,6 +60,14 @@ public class UserController {
         Optional<User> optionalUser = userService.findById(id);
          if (optionalUser.isPresent()){
             userService.deleteById(id);
+            return ResponseEntity.ok("User deleted successfully");
+        } else return ResponseEntity.notFound().build();
+    }
+    @DeleteMapping("/username/{username}")
+    public ResponseEntity<String> deleteUserByUsername(@PathVariable String username){
+        User user = userService.findByUsername(username);
+        if (user != null){
+            userService.deleteByUsername(username);
             return ResponseEntity.ok("User deleted successfully");
         } else return ResponseEntity.notFound().build();
     }

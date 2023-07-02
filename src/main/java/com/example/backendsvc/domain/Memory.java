@@ -20,7 +20,7 @@ public class Memory {
     private String content;
     private Timestamp createdDate;
     private Timestamp modifiedDate;
-    @ManyToOne
+    @ManyToOne()
     @JsonIgnoreProperties("memories")
     private User author;
 }
