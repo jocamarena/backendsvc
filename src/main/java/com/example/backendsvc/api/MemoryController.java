@@ -27,8 +27,8 @@ public class MemoryController {
         this.userService = userService;
     }
     @DeleteMapping
-    public void deleteAllMemories(){
-        memoryService.deleteAllMemories();
+    public void deleteAllMemoriesByAuthorId(@PathVariable Long id){
+        memoryService.deleteAllMemoriesByAuthorId(id);
     }
     @GetMapping("/default")
     public ResponseEntity<Memory> findDefaultMemory(@PathVariable Long id){
@@ -53,14 +53,9 @@ public class MemoryController {
                 .author(user)
                 .build();
         memory = memoryService.saveMemory(memory);
-/*        List<Memory> memories = user.getMemories();
-        memories.add(memory);
-        user.setMemories(memories);*/
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 
                 .buildAndExpand(memory).toUri();
-/*        logger.info("user.getMemories(): " + user.getMemories().size());
-        logger.info("URI" + uri);*/
         return ResponseEntity.created(uri).build();
     }
     public Memory createDefaultMemory(Long id){

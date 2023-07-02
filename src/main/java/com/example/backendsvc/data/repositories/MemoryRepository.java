@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface MemoryRepository extends JpaRepository<Memory, Long> {
     public List<Memory> findAllByAuthorId(Long id);
+    public void deleteAllByAuthorId(Long id);
 }

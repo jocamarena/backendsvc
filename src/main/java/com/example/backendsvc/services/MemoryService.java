@@ -22,6 +22,9 @@ public class MemoryService {
     public void deleteAllMemories(){
         memoryRepository.deleteAll();
     }
+    public void deleteAllMemoriesByAuthorId(Long id){
+        memoryRepository.deleteAllByAuthorId(id);
+    }
     public List<Memory> findAllMemories(){
         return memoryRepository.findAll();
     }
