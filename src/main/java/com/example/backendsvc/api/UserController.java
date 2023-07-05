@@ -101,6 +101,24 @@ public class UserController {
             }
         }
     }
+    @PutMapping("/username/{username}")
+    public ResponseEntity updateUserByUsername(@PathVariable String username, @RequestBody UserDTO userDTO){
+        User user = userService.findByUsername(username);
+        if (user != null){
+            user.setFirstName(userDTO.getFirstName());
+            user.setLastName(userDTO.getLastName());
+            user.setEmail(userDTO.getEmail());
+            user.setUsername(userDTO.getUsername());
+            user.setPassword(userDTO.getPassword());
+            user.setEnabled(userDTO.isEnabled());
+            user.setAccountNonExpired(userDTO.isAccountNonExpired());
+            user.setCredentialsNonExpired(userDTO.isCredentialsNonExpired());
+            user.setAccountNonLocked(userDTO.isAccountNonLocked());
+            user.setCreatedDate(userDTO.getCreatedDate());
+            userService.save(user);
+            return ResponseEntity.ok().build();
+        } else  return ResponseEntity.notFound().build();
+    }
     public List<UserDTO> convertUserListToUserDTOList(List<User> users){
         List<UserDTO> userDTOS = users.stream().map(user -> {
             return UserDTO.builder()

@@ -21,6 +21,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.thymeleaf/thymeleaf-spring6 -->
+		<dependency>
+			<groupId>org.thymeleaf</groupId>
+			<artifactId>thymeleaf-spring6</artifactId>
+			<version>3.1.1.RELEASE</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -61,6 +68,31 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+<!--			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>xjc</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+&lt;!&ndash;					&lt;!&ndash; The package of your generated sources &ndash;&gt;
+					<packageName>com.example.myschema</packageName>&ndash;&gt;
+
+					<schemadir>src/main/resources/schema/</schemadir>
+					<outputDirectory>src/main/java</outputDirectory>
+					<sources>
+						<source>src/main/resources/schema/</source>
+					</sources>
+					<clearOutputDir>false</clearOutputDir>
+
+				</configuration>
+			</plugin>-->
 		</plugins>
 	</build>
 
